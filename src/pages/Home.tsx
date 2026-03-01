@@ -559,7 +559,7 @@ const Home = () => {
             </div>
 
             <div className="space-y-4">
-              <h4 className="text-lg font-bold">Contato:</h4>
+              <h4 className="text-lg font-bold">Contato</h4>
               <div className="space-y-3 text-primary-foreground/60">
                 <p className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4" />
