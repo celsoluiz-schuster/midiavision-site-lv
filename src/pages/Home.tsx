@@ -86,7 +86,7 @@ const Home = () => {
                 <h1 className="text-4xl lg:text-6xl font-bold text-primary leading-tight">
                   Transformamos presença digital em geração real de clientes
                 </h1>
-                <p className="text-xl text-muted-foreground leading-relaxed">Sites estratégicos, tráfego pago e automação inteligente para empresas que querem crescer de forma previsível.C
+                <p className="text-xl text-muted-foreground leading-relaxed">Sites estratégicos, tráfego pago e automação inteligente para empresas que querem crescer de forma previsível.
 
                 </p>
               </div>
