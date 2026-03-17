@@ -99,6 +99,17 @@ const Home = () => {
                 </p>
               </div>
 
+              {/* Banner Guia GMN */}
+              <Link to="/guia-gmn" className="block">
+                <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl p-4 flex items-center justify-between gap-4 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <div>
+                    <span className="text-xs font-bold text-amber-100 uppercase tracking-wider">Novo</span>
+                    <p className="text-white font-semibold text-sm sm:text-base">Guia Google Meu Negócio para Corretores — R$ 67</p>
+                  </div>
+                  <span className="bg-white text-amber-600 font-bold text-sm px-4 py-2 rounded-lg whitespace-nowrap shrink-0">Comprar agora →</span>
+                </div>
+              </Link>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   onClick={handleWhatsAppClick}
