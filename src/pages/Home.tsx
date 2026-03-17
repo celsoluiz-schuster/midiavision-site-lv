@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { MessageCircle, TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail } from 'lucide-react';
+import { MessageCircle, TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail, ShoppingCart } from 'lucide-react';
 
 const Home = () => {
   const whatsappNumber = '5551995090055';
