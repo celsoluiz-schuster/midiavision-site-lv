@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { MessageCircle, TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail } from 'lucide-react';
+import { MessageCircle, TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail, ShoppingCart } from 'lucide-react';
 
 const Home = () => {
   const whatsappNumber = '5551995090055';
@@ -54,10 +55,17 @@ const Home = () => {
               <a href="#para-quem" className="text-muted-foreground hover:text-primary font-medium transition-colors duration-300">Para Quem</a>
               <a href="#como-funciona" className="text-muted-foreground hover:text-primary font-medium transition-colors duration-300">Como Funciona</a>
 
+              <Link to="/guia-gmn">
+                <Button
+                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <ShoppingCart className="w-4 h-4 mr-2" />
+                  🛒 Comprar Produto
+                </Button>
+              </Link>
+
               <Button
                 onClick={handleWhatsAppClick}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-6 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
-
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Falar no WhatsApp
               </Button>
@@ -90,6 +98,17 @@ const Home = () => {
 
                 </p>
               </div>
+
+              {/* Banner Guia GMN */}
+              <Link to="/guia-gmn" className="block">
+                <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl p-4 flex items-center justify-between gap-4 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <div>
+                    <span className="text-xs font-bold text-amber-100 uppercase tracking-wider">Novo</span>
+                    <p className="text-white font-semibold text-sm sm:text-base">Guia Google Meu Negócio para Corretores — R$ 67</p>
+                  </div>
+                  <span className="bg-white text-amber-600 font-bold text-sm px-4 py-2 rounded-lg whitespace-nowrap shrink-0">Comprar agora →</span>
+                </div>
+              </Link>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
