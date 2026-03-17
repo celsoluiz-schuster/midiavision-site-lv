@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { MessageCircle, TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail, ShoppingCart } from 'lucide-react';
+import { TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail, ShoppingCart } from 'lucide-react';
 
 const Home = () => {
-  const whatsappNumber = '5551995090055';
-  const whatsappMessage = encodeURIComponent('Olá! Gostaria de conhecer mais sobre os serviços da MidiaVision.');
+  const contactEmail = 'midiavision.web@gmail.com';
 
-  const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+  const handleContactClick = () => {
+    window.location.href = `mailto:${contactEmail}`;
   };
 
   const handleLogoClick = () => {
@@ -46,7 +45,6 @@ const Home = () => {
                 src="/images/logo-midiavision.png"
                 alt="MidiaVision Logo"
                 className="h-24 w-auto object-contain transition-transform duration-300 hover:scale-105" />
-
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -64,21 +62,20 @@ const Home = () => {
               </Link>
 
               <Button
-                onClick={handleWhatsAppClick}
+                onClick={handleContactClick}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-6 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Falar no WhatsApp
+                <Mail className="w-4 h-4 mr-2" />
+                Contato
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <Button
-                onClick={handleWhatsAppClick}
+                onClick={handleContactClick}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground"
                 size="sm">
-
-                <MessageCircle className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
               </Button>
             </div>
           </div>
@@ -95,7 +92,6 @@ const Home = () => {
                   Transformamos presença digital em geração real de clientes
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">Sites estratégicos, tráfego pago e automação inteligente para empresas que querem crescer de forma previsível.
-
                 </p>
               </div>
 
@@ -112,20 +108,18 @@ const Home = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleContactClick}
                   size="lg"
                   className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
-
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Falar no WhatsApp
+                  <Mail className="w-5 h-5 mr-2" />
+                  Contato
                 </Button>
 
                 <Button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleContactClick}
                   size="lg"
                   variant="outline"
                   className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300">
-
                   Solicitar Orçamento
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -156,7 +150,6 @@ const Home = () => {
                   src="/images/hero-desk.png"
                   alt="Desk setup com laptop mostrando site profissional"
                   className="w-full h-auto rounded-2xl shadow-2xl" />
-
               </div>
               <div className="absolute -top-6 -right-6 w-72 h-72 bg-gradient-to-br from-mv-blue-light to-mv-lime rounded-full opacity-10 blur-3xl -z-10"></div>
               <div className="absolute -bottom-6 -left-6 w-64 h-64 bg-gradient-to-tr from-mv-green to-mv-blue-light rounded-full opacity-10 blur-3xl -z-10"></div>
@@ -242,9 +235,8 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleContactClick}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300 hover:shadow-lg">
-
                   Saiba Mais
                   <ChevronRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -275,23 +267,22 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleContactClick}
                   className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold transition-all duration-300 hover:shadow-lg">
-
                   Quero Mais Clientes
                   <ChevronRight className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
             </Card>
 
-            {/* Automação WhatsApp */}
+            {/* Automação */}
             <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 fade-in-section">
               <CardContent className="p-8 space-y-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-mv-blue-light to-mv-lime rounded-2xl flex items-center justify-center">
                   <Bot className="w-10 h-10 text-primary-foreground" />
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-bold text-primary">Automação via WhatsApp</h3>
+                  <h3 className="text-2xl font-bold text-primary">Automação de Atendimento</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     Automatize seu atendimento e nunca perca uma oportunidade de negócio
                   </p>
@@ -305,9 +296,8 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleWhatsAppClick}
+                  onClick={handleContactClick}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300 hover:shadow-lg">
-
                   Automatizar Agora
                   <ChevronRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -491,11 +481,10 @@ const Home = () => {
           <div className="mt-12 text-center fade-in-section">
             <p className="text-muted-foreground mb-6">Não encontrou sua dúvida?</p>
             <Button
-              onClick={handleWhatsAppClick}
+              onClick={handleContactClick}
               className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl">
-
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Fale Conosco no WhatsApp
+              <Mail className="w-5 h-5 mr-2" />
+              Fale Conosco
             </Button>
           </div>
         </div>
@@ -527,12 +516,11 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-6">
             <Button
-              onClick={handleWhatsAppClick}
+              onClick={handleContactClick}
               size="lg"
               className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-bold px-12 py-8 text-xl transition-all duration-300 hover:shadow-2xl hover:scale-105">
-
-              <MessageCircle className="w-6 h-6 mr-3" />
-              Falar no WhatsApp Agora
+              <Mail className="w-6 h-6 mr-3" />
+              Entre em Contato
             </Button>
           </div>
 
@@ -555,12 +543,10 @@ const Home = () => {
               <div
                 className="bg-primary-foreground p-6 rounded-lg inline-block cursor-pointer transition-transform duration-300 hover:scale-105"
                 onClick={handleLogoClick}>
-
                 <img
                   src="/images/logo-midiavision.png"
                   alt="MidiaVision Logo"
                   className="h-20 w-auto object-contain" />
-
               </div>
               <p className="text-primary-foreground/60">
                 Transformando presença digital em geração real de clientes.
@@ -581,19 +567,14 @@ const Home = () => {
               <h4 className="text-lg font-bold">Contato</h4>
               <div className="space-y-3 text-primary-foreground/60">
                 <p className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp disponível
-                </p>
-                <p className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  contato@midiavision.com.br
+                  midiavision.web@gmail.com
                 </p>
               </div>
               <Button
-                onClick={handleWhatsAppClick}
+                onClick={handleContactClick}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold transition-all duration-300">
-
-                <MessageCircle className="w-4 h-4 mr-2" />
+                <Mail className="w-4 h-4 mr-2" />
                 Fale Conosco
               </Button>
             </div>
@@ -606,13 +587,12 @@ const Home = () => {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
+      {/* Floating Contact Button */}
       <button
-        onClick={handleWhatsAppClick}
+        onClick={handleContactClick}
         className="fixed bottom-6 right-6 z-50 bg-mv-green hover:bg-mv-green-hover text-primary-foreground p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce"
-        aria-label="Falar no WhatsApp">
-
-        <MessageCircle className="w-6 h-6" />
+        aria-label="Entrar em contato">
+        <Mail className="w-6 h-6" />
       </button>
     </div>);
 
