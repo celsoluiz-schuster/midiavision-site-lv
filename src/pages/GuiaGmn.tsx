@@ -489,7 +489,7 @@ const GuiaGmn = () => {
         <canvas id="qrCanvas" width="180" height="180" style="display:block;margin:0 auto 16px"></canvas>
       </div>
       <div class="pix-price">R$ 67,00</div>
-      <div class="pix-name">MidiaVision · Chave Pix (CPF): 356.689.700-00</div>
+      
       <button class="btn-copy" data-action="copyPix">📋 Copiar chave Pix</button>
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px;margin-top:20px">Seu e-mail para receber o guia</label>
       <input type="email" id="buyerEmail" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
