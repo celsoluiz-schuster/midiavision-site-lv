@@ -452,7 +452,7 @@ const GuiaGmn = () => {
 
 <footer>
   © 2025 MidiaVision Digital · Todos os direitos reservados<br>
-  Este produto é entregue em formato digital (PDF). Após confirmação do pagamento, o material é enviado por e-mail em até 5 minutos.
+  Este produto é entregue em formato digital (PDF). Após confirmação do pagamento, o material é enviado por e-mail.
 </footer>
 
 <!-- Modal Pix -->
