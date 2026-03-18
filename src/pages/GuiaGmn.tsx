@@ -357,7 +357,7 @@ const GuiaGmn = () => {
       <div class="divider"></div>
       <div class="includes-title">O que está incluso</div>
       <ul class="includes-list">
-        <li><span class="icon">📘</span> Guia completo em PDF (35+ páginas)</li>
+        <li><span class="icon">📘</span> Guia completo em PDF</li>
         <li><span class="icon">📅</span> 48 templates de postagens (12 meses)</li>
         <li><span class="icon">✅</span> Checklist de otimização completo</li>
         <li><span class="icon">📊</span> Tabela de metas e métricas</li>
