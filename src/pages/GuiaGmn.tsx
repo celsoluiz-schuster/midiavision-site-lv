@@ -175,11 +175,23 @@ const GuiaGmn = () => {
       document.getElementById("step2")?.classList.add("active");
     }
 
+    function showSuccessStep() {
+      document.getElementById("step2")?.classList.remove("active");
+      document.getElementById("step3")?.classList.add("active");
+    }
+
     // Attach event listeners
     document.querySelectorAll('[data-action="openModal"]').forEach((el) => el.addEventListener("click", openModal));
     document.querySelectorAll('[data-action="closeModal"]').forEach((el) => el.addEventListener("click", closeModal));
     document.querySelectorAll('[data-action="copyPix"]').forEach((el) => el.addEventListener("click", copyPix));
     document.querySelectorAll('[data-action="goStep2"]').forEach((el) => el.addEventListener("click", goStep2));
+
+    const emailBtnEl = document.getElementById("emailBtn");
+    if (emailBtnEl) {
+      emailBtnEl.addEventListener("click", () => {
+        setTimeout(showSuccessStep, 1500);
+      });
+    }
 
     const overlay = document.getElementById("modalOverlay");
     if (overlay)
@@ -509,6 +521,15 @@ const GuiaGmn = () => {
         Horário de atendimento: seg–sáb, 8h–20h<br>
         Prazo de entrega: por e-mail após confirmação
       </div>
+    </div>
+    <div class="modal-step" id="step3">
+      <div style="font-size:56px;margin-bottom:16px">✅</div>
+      <h3 style="color:#16A34A">E-mail enviado com sucesso!</h3>
+      <p style="font-size:15px;color:#4B5563;margin-top:8px;line-height:1.6">Recebemos sua solicitação.<br>Logo seu material será enviado para o e-mail informado.</p>
+      <div style="margin-top:24px;padding:14px 20px;background:#F0FDF4;border-radius:12px;border:1px solid #BBF7D0;font-size:13px;color:#166534;line-height:1.6">
+        📩 Fique atento à sua caixa de entrada e também à pasta de spam.
+      </div>
+      <button class="btn-done" data-action="closeModal" style="margin-top:24px;background:#16A34A;">Fechar</button>
     </div>
   </div>
 </div>
