@@ -175,11 +175,23 @@ const GuiaGmn = () => {
       document.getElementById("step2")?.classList.add("active");
     }
 
+    function showSuccessStep() {
+      document.getElementById("step2")?.classList.remove("active");
+      document.getElementById("step3")?.classList.add("active");
+    }
+
     // Attach event listeners
     document.querySelectorAll('[data-action="openModal"]').forEach((el) => el.addEventListener("click", openModal));
     document.querySelectorAll('[data-action="closeModal"]').forEach((el) => el.addEventListener("click", closeModal));
     document.querySelectorAll('[data-action="copyPix"]').forEach((el) => el.addEventListener("click", copyPix));
     document.querySelectorAll('[data-action="goStep2"]').forEach((el) => el.addEventListener("click", goStep2));
+
+    const emailBtnEl = document.getElementById("emailBtn");
+    if (emailBtnEl) {
+      emailBtnEl.addEventListener("click", () => {
+        setTimeout(showSuccessStep, 1500);
+      });
+    }
 
     const overlay = document.getElementById("modalOverlay");
     if (overlay)
