@@ -341,7 +341,7 @@ const GuiaGmn = () => {
         <li><span class="icon">📊</span> Tabela de metas e métricas</li>
         <li><span class="icon">🔁</span> Atualizações futuras gratuitas</li>
       </ul>
-      <button class="btn-pix" data-action="openModal">Quero comprar por R$ 67<span>Pagar via Pix · Receber na hora</span></button>
+      <button class="btn-pix" data-action="openModal">Quero comprar por R$ 67<span>Pagar via Pix · Receba via e-mail</span></button>
       <div class="guarantee">🔒 Pagamento seguro via Pix  ·  Entrega do guia por e-mail</div>
     </div>
   </div>
