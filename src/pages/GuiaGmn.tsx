@@ -1,18 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const GuiaGmn = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Load Google Fonts
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap';
-    link.rel = 'stylesheet';
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap";
+    link.rel = "stylesheet";
     document.head.appendChild(link);
 
     // Load QRious
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js';
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js";
     script.onload = () => {
       executePageScripts();
     };
@@ -25,160 +26,181 @@ const GuiaGmn = () => {
   }, []);
 
   const executePageScripts = () => {
-    const PIX_KEY = '35668970000';
-    const SELLER_EMAIL = 'midiavision.web@gmail.com';
-    const PRODUCT_NAME = 'Guia Google Meu Negócio para Corretores';
-    const PRICE = 'R$ 67,00';
+    const PIX_KEY = "35668970000";
+    const SELLER_EMAIL = "midiavision.web@gmail.com";
+    const PRODUCT_NAME = "Guia Google Meu Negócio para Corretores";
+    const PRICE = "R$ 67,00";
 
     function crc16(str: string) {
-      let crc = 0xFFFF;
+      let crc = 0xffff;
       for (let i = 0; i < str.length; i++) {
         crc ^= str.charCodeAt(i) << 8;
         for (let j = 0; j < 8; j++) {
-          crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+          crc = crc & 0x8000 ? (crc << 1) ^ 0x1021 : crc << 1;
         }
       }
-      return ((crc & 0xFFFF).toString(16).toUpperCase()).padStart(4, '0');
+      return (crc & 0xffff).toString(16).toUpperCase().padStart(4, "0");
     }
 
     function tlv(id: string, value: string) {
-      const len = String(value.length).padStart(2, '0');
+      const len = String(value.length).padStart(2, "0");
       return id + len + value;
     }
 
     function buildPixPayload(key: string, amount: string) {
-      const gui = tlv('00', 'BR.GOV.BCB.PIX');
-      const pixKey = tlv('01', key);
-      const mai = tlv('26', gui + pixKey);
-      const mcc = tlv('52', '0000');
-      const currency = tlv('53', '986');
-      const amtStr = tlv('54', parseFloat(amount).toFixed(2));
-      const country = tlv('58', 'BR');
-      const name = tlv('59', 'MIDIAVISION');
-      const city = tlv('60', 'PORTOALEGRE');
-      const add = tlv('62', tlv('05', '***'));
+      const gui = tlv("00", "BR.GOV.BCB.PIX");
+      const pixKey = tlv("01", key);
+      const mai = tlv("26", gui + pixKey);
+      const mcc = tlv("52", "0000");
+      const currency = tlv("53", "986");
+      const amtStr = tlv("54", parseFloat(amount).toFixed(2));
+      const country = tlv("58", "BR");
+      const name = tlv("59", "MIDIAVISION");
+      const city = tlv("60", "PORTOALEGRE");
+      const add = tlv("62", tlv("05", "***"));
       const payload = mai + mcc + currency + amtStr + country + name + city + add;
-      const withoutCRC = '000201' + payload + '6304';
+      const withoutCRC = "000201" + payload + "6304";
       return withoutCRC + crc16(withoutCRC);
     }
 
     function renderQR() {
-      const canvas = document.getElementById('qrCanvas') as HTMLCanvasElement;
+      const canvas = document.getElementById("qrCanvas") as HTMLCanvasElement;
       if (!canvas) return;
-      const payload = buildPixPayload(PIX_KEY, '67.00');
+      const payload = buildPixPayload(PIX_KEY, "67.00");
       if ((window as any).QRious) {
         new (window as any).QRious({
           element: canvas,
           value: payload,
           size: 180,
-          foreground: '#0F2744',
-          background: '#FFFFFF',
-          level: 'M'
+          foreground: "#0F2744",
+          background: "#FFFFFF",
+          level: "M",
         });
       }
     }
 
     function showToast() {
-      const t = document.getElementById('toast');
+      const t = document.getElementById("toast");
       if (!t) return;
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2500);
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2500);
     }
 
     function copyPix() {
-      navigator.clipboard.writeText(PIX_KEY).then(showToast).catch(() => {
-        const el = document.createElement('textarea');
-        el.value = PIX_KEY;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        showToast();
-      });
+      navigator.clipboard
+        .writeText(PIX_KEY)
+        .then(showToast)
+        .catch(() => {
+          const el = document.createElement("textarea");
+          el.value = PIX_KEY;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand("copy");
+          document.body.removeChild(el);
+          showToast();
+        });
     }
 
     function validateEmailMatch() {
-      const e1 = (document.getElementById('buyerEmail') as HTMLInputElement)?.value.trim();
-      const e2 = (document.getElementById('buyerEmailConfirm') as HTMLInputElement)?.value.trim();
-      const msg = document.getElementById('emailMatchMsg');
-      if (!msg || !e2) { if (msg) msg.style.display = 'none'; return; }
-      if (e1 === e2 && e1.includes('@')) {
-        msg.style.display = 'block';
-        msg.style.color = '#166534';
-        msg.textContent = '✅ E-mails conferem!';
-        (document.getElementById('buyerEmailConfirm') as HTMLInputElement).style.borderColor = '#22a052';
+      const e1 = (document.getElementById("buyerEmail") as HTMLInputElement)?.value.trim();
+      const e2 = (document.getElementById("buyerEmailConfirm") as HTMLInputElement)?.value.trim();
+      const msg = document.getElementById("emailMatchMsg");
+      if (!msg || !e2) {
+        if (msg) msg.style.display = "none";
+        return;
+      }
+      if (e1 === e2 && e1.includes("@")) {
+        msg.style.display = "block";
+        msg.style.color = "#166534";
+        msg.textContent = "✅ E-mails conferem!";
+        (document.getElementById("buyerEmailConfirm") as HTMLInputElement).style.borderColor = "#22a052";
       } else {
-        msg.style.display = 'block';
-        msg.style.color = '#DC2626';
-        msg.textContent = '❌ Os e-mails não conferem. Verifique.';
-        (document.getElementById('buyerEmailConfirm') as HTMLInputElement).style.borderColor = '#DC2626';
+        msg.style.display = "block";
+        msg.style.color = "#DC2626";
+        msg.textContent = "❌ Os e-mails não conferem. Verifique.";
+        (document.getElementById("buyerEmailConfirm") as HTMLInputElement).style.borderColor = "#DC2626";
       }
     }
 
     function openModal() {
-      document.getElementById('modalOverlay')?.classList.add('active');
-      document.getElementById('step1')?.classList.add('active');
-      document.getElementById('step2')?.classList.remove('active');
-      (document.getElementById('buyerEmail') as HTMLInputElement).value = '';
-      (document.getElementById('buyerEmailConfirm') as HTMLInputElement).value = '';
-      const msg = document.getElementById('emailMatchMsg');
-      if (msg) msg.style.display = 'none';
+      document.getElementById("modalOverlay")?.classList.add("active");
+      document.getElementById("step1")?.classList.add("active");
+      document.getElementById("step2")?.classList.remove("active");
+      (document.getElementById("buyerEmail") as HTMLInputElement).value = "";
+      (document.getElementById("buyerEmailConfirm") as HTMLInputElement).value = "";
+      const msg = document.getElementById("emailMatchMsg");
+      if (msg) msg.style.display = "none";
       setTimeout(renderQR, 150);
     }
 
     function closeModal() {
-      document.getElementById('modalOverlay')?.classList.remove('active');
+      document.getElementById("modalOverlay")?.classList.remove("active");
     }
 
     function goStep2() {
-      const email = (document.getElementById('buyerEmail') as HTMLInputElement)?.value.trim();
-      const emailConfirm = (document.getElementById('buyerEmailConfirm') as HTMLInputElement)?.value.trim();
-      const input = document.getElementById('buyerEmail') as HTMLInputElement;
-      const inputConfirm = document.getElementById('buyerEmailConfirm') as HTMLInputElement;
-      const msg = document.getElementById('emailMatchMsg');
+      const email = (document.getElementById("buyerEmail") as HTMLInputElement)?.value.trim();
+      const emailConfirm = (document.getElementById("buyerEmailConfirm") as HTMLInputElement)?.value.trim();
+      const input = document.getElementById("buyerEmail") as HTMLInputElement;
+      const inputConfirm = document.getElementById("buyerEmailConfirm") as HTMLInputElement;
+      const msg = document.getElementById("emailMatchMsg");
 
-      if (!email || !email.includes('@')) {
-        input.style.borderColor = '#DC2626';
+      if (!email || !email.includes("@")) {
+        input.style.borderColor = "#DC2626";
         input.focus();
         return;
       }
       if (email !== emailConfirm) {
-        inputConfirm.style.borderColor = '#DC2626';
+        inputConfirm.style.borderColor = "#DC2626";
         if (msg) {
-          msg.style.display = 'block';
-          msg.style.color = '#DC2626';
-          msg.textContent = '❌ Os e-mails não conferem. Verifique.';
+          msg.style.display = "block";
+          msg.style.color = "#DC2626";
+          msg.textContent = "❌ Os e-mails não conferem. Verifique.";
         }
         inputConfirm.focus();
         return;
       }
-      const subject = encodeURIComponent('Comprovante de pagamento — ' + PRODUCT_NAME);
+      const subject = encodeURIComponent("Comprovante de pagamento — " + PRODUCT_NAME);
       const body = encodeURIComponent(
-        'Olá!\n\nAcabei de realizar o pagamento via Pix do produto "' + PRODUCT_NAME + '".\n\nValor pago: ' + PRICE + '\nMeu e-mail para receber o guia: ' + email + '\n\nSegue o comprovante em anexo.\n\nObrigado!'
+        'Olá!\n\nAcabei de realizar o pagamento via Pix do produto "' +
+          PRODUCT_NAME +
+          '".\n\nValor pago: ' +
+          PRICE +
+          "\nMeu e-mail para receber o guia: " +
+          email +
+          "\n\nSegue o comprovante em anexo.\n\nObrigado!",
       );
-      const emailBtn = document.getElementById('emailBtn') as HTMLAnchorElement;
-      if (emailBtn) emailBtn.href = 'mailto:' + SELLER_EMAIL + '?subject=' + subject + '&body=' + body;
-      document.getElementById('step1')?.classList.remove('active');
-      document.getElementById('step2')?.classList.add('active');
+      const emailBtn = document.getElementById("emailBtn") as HTMLAnchorElement;
+      if (emailBtn) emailBtn.href = "mailto:" + SELLER_EMAIL + "?subject=" + subject + "&body=" + body;
+      document.getElementById("step1")?.classList.remove("active");
+      document.getElementById("step2")?.classList.add("active");
     }
 
     // Attach event listeners
-    document.querySelectorAll('[data-action="openModal"]').forEach(el => el.addEventListener('click', openModal));
-    document.querySelectorAll('[data-action="closeModal"]').forEach(el => el.addEventListener('click', closeModal));
-    document.querySelectorAll('[data-action="copyPix"]').forEach(el => el.addEventListener('click', copyPix));
-    document.querySelectorAll('[data-action="goStep2"]').forEach(el => el.addEventListener('click', goStep2));
-    
-    const overlay = document.getElementById('modalOverlay');
-    if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+    document.querySelectorAll('[data-action="openModal"]').forEach((el) => el.addEventListener("click", openModal));
+    document.querySelectorAll('[data-action="closeModal"]').forEach((el) => el.addEventListener("click", closeModal));
+    document.querySelectorAll('[data-action="copyPix"]').forEach((el) => el.addEventListener("click", copyPix));
+    document.querySelectorAll('[data-action="goStep2"]').forEach((el) => el.addEventListener("click", goStep2));
 
-    const emailConfirmInput = document.getElementById('buyerEmailConfirm');
-    if (emailConfirmInput) emailConfirmInput.addEventListener('blur', validateEmailMatch);
-    const emailInput = document.getElementById('buyerEmail');
+    const overlay = document.getElementById("modalOverlay");
+    if (overlay)
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal();
+      });
+
+    const emailConfirmInput = document.getElementById("buyerEmailConfirm");
+    if (emailConfirmInput) emailConfirmInput.addEventListener("blur", validateEmailMatch);
+    const emailInput = document.getElementById("buyerEmail");
     if (emailInput) {
-      emailInput.addEventListener('focus', function(this: HTMLInputElement) { this.style.borderColor = '#1B3A6B'; this.style.background = '#fff'; });
+      emailInput.addEventListener("focus", function (this: HTMLInputElement) {
+        this.style.borderColor = "#1B3A6B";
+        this.style.background = "#fff";
+      });
     }
     if (emailConfirmInput) {
-      emailConfirmInput.addEventListener('focus', function(this: HTMLInputElement) { this.style.borderColor = '#1B3A6B'; this.style.background = '#fff'; });
+      emailConfirmInput.addEventListener("focus", function (this: HTMLInputElement) {
+        this.style.borderColor = "#1B3A6B";
+        this.style.background = "#fff";
+      });
     }
   };
 
@@ -436,7 +458,7 @@ const GuiaGmn = () => {
       <div class="faq-item"><h5>Precisa ter site para usar o Google Meu Negócio?</h5><p>Não. O GMN funciona independente de site. O guia mostra alternativas para quem não tem site próprio.</p></div>
       <div class="faq-item"><h5>Em quanto tempo começo a aparecer no Google?</h5><p>Perfis verificados e otimizados costumam aparecer nas buscas locais em 2 a 4 semanas. Com postagens frequentes, o resultado é ainda mais rápido.</p></div>
       <div class="faq-item"><h5>O guia funciona para qualquer cidade do Brasil?</h5><p>Sim. Todo o conteúdo é aplicável em qualquer município. Os templates têm campos personalizáveis como [sua cidade] e [bairro].</p></div>
-      <div class="faq-item"><h5>Como recebo o material depois do pagamento?</h5><p>Após o Pix, você envia o comprovante por e-mail e recebe o guia em até 5 minutos — mesmo em finais de semana.</p></div>
+      <div class="faq-item"><h5>Como recebo o material depois do pagamento?</h5><p>Após o Pix, você envia o comprovante por e-mail e recebe o guia por e-mail — mesmo em finais de semana.</p></div>
       <div class="faq-item"><h5>Já tenho perfil criado. Este guia ainda vale?</h5><p>Com certeza. O módulo de otimização foi feito exatamente para quem já tem perfil mas não está aparecendo bem.</p></div>
       <div class="faq-item"><h5>Precisa ter conhecimento técnico?</h5><p>Não. O guia foi escrito para corretores, não para profissionais de tecnologia. Linguagem simples, passo a passo com prints e exemplos práticos.</p></div>
     </div>
@@ -480,12 +502,12 @@ const GuiaGmn = () => {
       <div class="step-badge">Passo 2 de 2</div>
       <div style="font-size:48px;margin-bottom:16px">📧</div>
       <h3>Envie o comprovante</h3>
-      <p>Clique abaixo para abrir seu e-mail com a mensagem já preenchida. Anexe o comprovante do Pix e envie — você receberá o guia em até 5 minutos.</p>
+      <p>Clique abaixo para abrir seu e-mail com a mensagem já preenchida. Anexe o comprovante do Pix e envie — você receberá o guia por e-mail.</p>
       <a id="emailBtn" href="#" class="btn-wpp" target="_blank" rel="noopener"><div class="wpp-icon">✉️</div> Abrir e-mail com comprovante</a>
       <div style="font-size:12px;color:#6B7280;line-height:1.8">
         O e-mail será enviado para: <strong>midiavision.web@gmail.com</strong><br>
         Horário de atendimento: seg–sáb, 8h–20h<br>
-        Prazo de entrega: até 5 minutos após confirmação
+        Prazo de entrega: por e-mail após confirmação
       </div>
     </div>
   </div>
@@ -494,13 +516,7 @@ const GuiaGmn = () => {
 <div class="toast" id="toast">✅ Chave Pix copiada!</div>
 `;
 
-  return (
-    <div
-      ref={containerRef}
-      className="gmn-page"
-      dangerouslySetInnerHTML={{ __html: htmlContent }}
-    />
-  );
+  return <div ref={containerRef} className="gmn-page" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
 };
 
 export default GuiaGmn;
