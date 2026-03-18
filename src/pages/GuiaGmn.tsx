@@ -235,9 +235,9 @@ const GuiaGmn = () => {
   .gmn-page .btn-pix:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(34,160,82,0.45); }
   .gmn-page .btn-pix span { display: block; font-size: 12px; font-weight: 400; opacity: 0.85; margin-top: 2px; }
   .gmn-page .guarantee { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray); justify-content: center; margin-top: 16px; }
-  .gmn-page .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,39,68,0.85); backdrop-filter: blur(6px); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+  .gmn-page .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,39,68,0.85); backdrop-filter: blur(6px); z-index: 1000; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .gmn-page .modal-overlay.active { display: flex; }
-  .gmn-page .modal { background: var(--white); border-radius: 24px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; position: relative; animation: gmn-modalIn 0.3s ease; }
+  .gmn-page .modal { background: var(--white); border-radius: 24px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; position: relative; animation: gmn-modalIn 0.3s ease; margin: auto 0; flex-shrink: 0; }
   @keyframes gmn-modalIn { from { opacity: 0; transform: scale(0.94) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
   .gmn-page .modal-close { position: absolute; top: 16px; right: 16px; background: #F3F4F6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: var(--gray); transition: background 0.2s; }
   .gmn-page .modal-close:hover { background: #E5E7EB; }
