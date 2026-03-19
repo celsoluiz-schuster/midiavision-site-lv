@@ -159,18 +159,6 @@ const GuiaGmn = () => {
         inputConfirm.focus();
         return;
       }
-      const subject = encodeURIComponent("Comprovante de pagamento — " + PRODUCT_NAME);
-      const body = encodeURIComponent(
-        'Olá!\n\nAcabei de realizar o pagamento via Pix do produto "' +
-          PRODUCT_NAME +
-          '".\n\nValor pago: ' +
-          PRICE +
-          "\nMeu e-mail para receber o guia: " +
-          email +
-          "\n\nSegue o comprovante em anexo.\n\nObrigado!",
-      );
-      const emailBtn = document.getElementById("emailBtn") as HTMLAnchorElement;
-      if (emailBtn) emailBtn.href = "mailto:" + SELLER_EMAIL + "?subject=" + subject + "&body=" + body;
       document.getElementById("step1")?.classList.remove("active");
       document.getElementById("step2")?.classList.add("active");
     }
