@@ -519,8 +519,8 @@ const GuiaGmn = () => {
     <button class="modal-close" data-action="closeModal">✕</button>
     <div class="modal-step active" id="step1">
       <div class="step-badge">Passo 1 de 2</div>
-      <h3>Pague via Pix</h3>
-      <p>Escaneie o QR Code ou copie a chave. Depois informe seu e-mail para receber o guia.</p>
+      <h3>Efetue o pagamento via Pix</h3>
+      <p>Escaneie o QR Code ou copie a chave. Depois informe seu e-mail e clique em confirmar.</p>
       <div class="pix-key-box">
         <canvas id="qrCanvas" width="180" height="180" style="display:block;margin:0 auto 16px"></canvas>
       </div>
