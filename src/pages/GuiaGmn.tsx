@@ -270,12 +270,17 @@ const GuiaGmn = () => {
     if (emailConfirmInput) emailConfirmInput.addEventListener("blur", validateEmailMatch);
     const emailInput = document.getElementById("buyerEmail");
     if (emailInput) {
+      emailInput.addEventListener("blur", () => validateSingleEmail("buyerEmail", "emailValidMsg"));
       emailInput.addEventListener("focus", function (this: HTMLInputElement) {
         this.style.borderColor = "#1B3A6B";
         this.style.background = "#fff";
       });
     }
     if (emailConfirmInput) {
+      emailConfirmInput.addEventListener("blur", () => {
+        validateSingleEmail("buyerEmailConfirm", "emailConfirmValidMsg");
+        validateEmailMatch();
+      });
       emailConfirmInput.addEventListener("focus", function (this: HTMLInputElement) {
         this.style.borderColor = "#1B3A6B";
         this.style.background = "#fff";
