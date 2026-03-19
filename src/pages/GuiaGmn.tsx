@@ -162,6 +162,10 @@ const GuiaGmn = () => {
       (document.getElementById("buyerEmailConfirm") as HTMLInputElement).value = "";
       const msg = document.getElementById("emailMatchMsg");
       if (msg) msg.style.display = "none";
+      const ev = document.getElementById("emailValidMsg");
+      if (ev) ev.style.display = "none";
+      const ecv = document.getElementById("emailConfirmValidMsg");
+      if (ecv) ecv.style.display = "none";
       setTimeout(renderQR, 150);
     }
 
