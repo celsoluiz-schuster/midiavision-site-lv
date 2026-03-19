@@ -164,6 +164,15 @@ const GuiaGmn = () => {
     }
 
     function showSuccessStep() {
+      // Open mailto to send the proof via email
+      const buyerEmail = (document.getElementById("buyerEmail") as HTMLInputElement)?.value || "";
+      const subject = encodeURIComponent("Comprovante Pix - Guia GMN");
+      const body = encodeURIComponent(
+        `Olá, segue em anexo o comprovante de pagamento do Guia Google Meu Negócio.\n\nE-mail para entrega: ${buyerEmail}\n\nObrigado!`
+      );
+      window.open(`mailto:midiavision.web@gmail.com?subject=${subject}&body=${body}`, "_blank");
+
+      // Show success step
       document.getElementById("step2")?.classList.remove("active");
       document.getElementById("step3")?.classList.add("active");
     }
