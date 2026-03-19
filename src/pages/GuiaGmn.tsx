@@ -107,6 +107,29 @@ const GuiaGmn = () => {
         });
     }
 
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function isValidEmail(email: string): boolean {
+      return EMAIL_REGEX.test(email);
+    }
+
+    function validateSingleEmail(inputId: string, msgId: string) {
+      const input = document.getElementById(inputId) as HTMLInputElement;
+      const msg = document.getElementById(msgId);
+      if (!input || !msg) return;
+      const val = input.value.trim();
+      if (!val) { msg.style.display = "none"; input.style.borderColor = "#E5E7EB"; return; }
+      if (!isValidEmail(val)) {
+        msg.style.display = "block";
+        msg.style.color = "#DC2626";
+        msg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        input.style.borderColor = "#DC2626";
+      } else {
+        msg.style.display = "none";
+        input.style.borderColor = "#22a052";
+      }
+    }
+
     function validateEmailMatch() {
       const e1 = (document.getElementById("buyerEmail") as HTMLInputElement)?.value.trim();
       const e2 = (document.getElementById("buyerEmailConfirm") as HTMLInputElement)?.value.trim();
@@ -115,7 +138,10 @@ const GuiaGmn = () => {
         if (msg) msg.style.display = "none";
         return;
       }
-      if (e1 === e2 && e1.includes("@")) {
+      if (!isValidEmail(e2)) {
+        return; // individual validation handles this
+      }
+      if (e1 === e2) {
         msg.style.display = "block";
         msg.style.color = "#166534";
         msg.textContent = "✅ E-mails conferem!";
@@ -136,6 +162,10 @@ const GuiaGmn = () => {
       (document.getElementById("buyerEmailConfirm") as HTMLInputElement).value = "";
       const msg = document.getElementById("emailMatchMsg");
       if (msg) msg.style.display = "none";
+      const ev = document.getElementById("emailValidMsg");
+      if (ev) ev.style.display = "none";
+      const ecv = document.getElementById("emailConfirmValidMsg");
+      if (ecv) ecv.style.display = "none";
       setTimeout(renderQR, 150);
     }
 
@@ -150,9 +180,26 @@ const GuiaGmn = () => {
       const inputConfirm = document.getElementById("buyerEmailConfirm") as HTMLInputElement;
       const msg = document.getElementById("emailMatchMsg");
 
-      if (!email || !email.includes("@")) {
+      if (!email || !isValidEmail(email)) {
         input.style.borderColor = "#DC2626";
+        const emailErrMsg = document.getElementById("emailValidMsg");
+        if (emailErrMsg) {
+          emailErrMsg.style.display = "block";
+          emailErrMsg.style.color = "#DC2626";
+          emailErrMsg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        }
         input.focus();
+        return;
+      }
+      if (!isValidEmail(emailConfirm)) {
+        inputConfirm.style.borderColor = "#DC2626";
+        const confirmErrMsg = document.getElementById("emailConfirmValidMsg");
+        if (confirmErrMsg) {
+          confirmErrMsg.style.display = "block";
+          confirmErrMsg.style.color = "#DC2626";
+          confirmErrMsg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        }
+        inputConfirm.focus();
         return;
       }
       if (email !== emailConfirm) {
@@ -227,12 +274,17 @@ const GuiaGmn = () => {
     if (emailConfirmInput) emailConfirmInput.addEventListener("blur", validateEmailMatch);
     const emailInput = document.getElementById("buyerEmail");
     if (emailInput) {
+      emailInput.addEventListener("blur", () => validateSingleEmail("buyerEmail", "emailValidMsg"));
       emailInput.addEventListener("focus", function (this: HTMLInputElement) {
         this.style.borderColor = "#1B3A6B";
         this.style.background = "#fff";
       });
     }
     if (emailConfirmInput) {
+      emailConfirmInput.addEventListener("blur", () => {
+        validateSingleEmail("buyerEmailConfirm", "emailConfirmValidMsg");
+        validateEmailMatch();
+      });
       emailConfirmInput.addEventListener("focus", function (this: HTMLInputElement) {
         this.style.borderColor = "#1B3A6B";
         this.style.background = "#fff";
@@ -528,9 +580,11 @@ const GuiaGmn = () => {
       
       <button class="btn-copy" data-action="copyPix">📋 Copiar chave Pix</button>
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px;margin-top:20px">Seu e-mail para receber o guia</label>
-      <input type="email" id="buyerEmail" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
+      <input type="email" id="buyerEmail" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:4px;" />
+      <div id="emailValidMsg" style="display:none;font-size:13px;margin-bottom:10px"></div>
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px">Confirme seu e-mail</label>
-      <input type="email" id="buyerEmailConfirm" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
+      <input type="email" id="buyerEmailConfirm" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:4px;" />
+      <div id="emailConfirmValidMsg" style="display:none;font-size:13px;margin-bottom:10px"></div>
       <div id="emailMatchMsg" style="display:none;font-size:13px;margin-bottom:12px"></div>
       <button class="btn-done" data-action="goStep2">Já paguei — Confirmar</button>
     </div>
