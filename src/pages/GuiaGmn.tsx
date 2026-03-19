@@ -500,13 +500,13 @@ const GuiaGmn = () => {
       <div class="step-badge">Passo 2 de 2</div>
       <div style="font-size:48px;margin-bottom:16px">📧</div>
       <h3>Envie o comprovante</h3>
-      <p>Clique abaixo para abrir seu e-mail com a mensagem já preenchida. Anexe o comprovante do Pix e envie — você receberá o guia por e-mail.</p>
-      <a id="emailBtn" href="#" class="btn-wpp" target="_blank" rel="noopener"><div class="wpp-icon">✉️</div> Abrir e-mail com comprovante</a>
-      <div style="font-size:12px;color:#6B7280;line-height:1.8">
-        O e-mail será enviado para: <strong>midiavision.web@gmail.com</strong><br>
+      <p style="font-size:14px;color:#4B5563;line-height:1.6;margin-bottom:16px">Envie o comprovante do Pix para o e-mail abaixo. Você receberá o guia no e-mail informado.</p>
+      <div style="margin-bottom:16px;padding:14px 20px;background:#F3F4F6;border-radius:12px;border:1px solid #E5E7EB;font-size:13px;color:#374151;line-height:1.8">
+        📩 Enviar comprovante para: <strong>midiavision.web@gmail.com</strong><br>
         Horário de atendimento: seg–sáb, 8h–20h<br>
         Prazo de entrega: por e-mail após confirmação
       </div>
+      <button id="sendBtn" class="btn-done" style="background:#16A34A;font-size:16px;padding:14px 32px;cursor:pointer;">✉️ Enviar</button>
     </div>
     <div class="modal-step" id="step3">
       <div style="font-size:56px;margin-bottom:16px">✅</div>
