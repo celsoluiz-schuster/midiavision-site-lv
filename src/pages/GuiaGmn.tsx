@@ -519,8 +519,8 @@ const GuiaGmn = () => {
     <button class="modal-close" data-action="closeModal">✕</button>
     <div class="modal-step active" id="step1">
       <div class="step-badge">Passo 1 de 2</div>
-      <h3>Pague via Pix</h3>
-      <p>Escaneie o QR Code ou copie a chave. Depois informe seu e-mail para receber o guia.</p>
+      <h3>Efetue o pagamento via Pix</h3>
+      <p>Escaneie o QR Code ou copie a chave. Depois informe seu e-mail e clique em confirmar.</p>
       <div class="pix-key-box">
         <canvas id="qrCanvas" width="180" height="180" style="display:block;margin:0 auto 16px"></canvas>
       </div>
@@ -532,24 +532,19 @@ const GuiaGmn = () => {
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px">Confirme seu e-mail</label>
       <input type="email" id="buyerEmailConfirm" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
       <div id="emailMatchMsg" style="display:none;font-size:13px;margin-bottom:12px"></div>
-      <button class="btn-done" data-action="goStep2">Já paguei — Próximo passo →</button>
+      <button class="btn-done" data-action="goStep2">Já paguei — Confirmar</button>
     </div>
     <div class="modal-step" id="step2">
       <div class="step-badge">Passo 2 de 2</div>
       <div style="font-size:48px;margin-bottom:16px">📧</div>
-      <h3>Envie o comprovante</h3>
-      <p style="font-size:14px;color:#4B5563;line-height:1.6;margin-bottom:16px">Envie o comprovante do Pix para o e-mail abaixo. Você receberá o guia no e-mail informado.</p>
-      <div style="margin-bottom:16px;padding:14px 20px;background:#F3F4F6;border-radius:12px;border:1px solid #E5E7EB;font-size:13px;color:#374151;line-height:1.8">
-        📩 Enviar comprovante para: <strong>midiavision.web@gmail.com</strong><br>
-        Horário de atendimento: seg–sáb, 8h–20h<br>
-        Prazo de entrega: por e-mail após confirmação
-      </div>
-      <button id="sendBtn" class="btn-done" style="background:#16A34A;font-size:16px;padding:14px 32px;cursor:pointer;">✉️ Enviar</button>
+      <h3>Avise que pagou!</h3>
+      <p style="font-size:14px;color:#4B5563;line-height:1.6;margin-bottom:16px">Clique no botão abaixo para nos avisar. Assim que confirmarmos o pagamento, enviaremos o guia para o seu e-mail.</p>
+      <button id="sendBtn" class="btn-done" style="background:#16A34A;font-size:16px;padding:14px 32px;cursor:pointer;">✅ Confirmar pagamento</button>
     </div>
     <div class="modal-step" id="step3">
       <div style="font-size:56px;margin-bottom:16px">✅</div>
-      <h3 style="color:#16A34A">E-mail enviado com sucesso!</h3>
-      <p style="font-size:15px;color:#4B5563;margin-top:8px;line-height:1.6">Recebemos sua solicitação.<br>Logo seu material será enviado para o e-mail informado.</p>
+      <h3 style="color:#16A34A">Aviso enviado!</h3>
+      <p style="font-size:15px;color:#4B5563;margin-top:8px;line-height:1.6">Recebemos sua confirmação. Vamos verificar o pagamento e enviar o guia para o e-mail informado em breve.</p>
       <div style="margin-top:24px;padding:14px 20px;background:#F0FDF4;border-radius:12px;border:1px solid #BBF7D0;font-size:13px;color:#166534;line-height:1.6">
         📩 Fique atento à sua caixa de entrada e também à pasta de spam.
       </div>
