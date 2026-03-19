@@ -174,11 +174,9 @@ const GuiaGmn = () => {
     document.querySelectorAll('[data-action="copyPix"]').forEach((el) => el.addEventListener("click", copyPix));
     document.querySelectorAll('[data-action="goStep2"]').forEach((el) => el.addEventListener("click", goStep2));
 
-    const emailBtnEl = document.getElementById("emailBtn");
-    if (emailBtnEl) {
-      emailBtnEl.addEventListener("click", () => {
-        setTimeout(showSuccessStep, 1500);
-      });
+    const sendBtn = document.getElementById("sendBtn");
+    if (sendBtn) {
+      sendBtn.addEventListener("click", showSuccessStep);
     }
 
     const overlay = document.getElementById("modalOverlay");
