@@ -11,6 +11,11 @@ const GuiaGmn = () => {
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
+    // Load EmailJS SDK
+    const emailjsScript = document.createElement("script");
+    emailjsScript.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+    document.body.appendChild(emailjsScript);
+
     // Load QRious
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js";
@@ -22,6 +27,7 @@ const GuiaGmn = () => {
     return () => {
       document.head.removeChild(link);
       if (document.body.contains(script)) document.body.removeChild(script);
+      if (document.body.contains(emailjsScript)) document.body.removeChild(emailjsScript);
     };
   }, []);
 
@@ -163,18 +169,41 @@ const GuiaGmn = () => {
       document.getElementById("step2")?.classList.add("active");
     }
 
-    function showSuccessStep() {
-      // Open mailto to send the proof via email
+    async function showSuccessStep() {
       const buyerEmail = (document.getElementById("buyerEmail") as HTMLInputElement)?.value || "";
-      const subject = encodeURIComponent("Comprovante Pix - Guia GMN");
-      const body = encodeURIComponent(
-        `Olá, segue em anexo o comprovante de pagamento do Guia Google Meu Negócio.\n\nE-mail para entrega: ${buyerEmail}\n\nObrigado!`
-      );
-      window.open(`mailto:midiavision.web@gmail.com?subject=${subject}&body=${body}`, "_blank");
+      const sendBtnEl = document.getElementById("sendBtn");
+      if (sendBtnEl) {
+        sendBtnEl.textContent = "⏳ Enviando...";
+        (sendBtnEl as HTMLButtonElement).disabled = true;
+      }
 
-      // Show success step
-      document.getElementById("step2")?.classList.remove("active");
-      document.getElementById("step3")?.classList.add("active");
+      try {
+        const emailjs = (window as any).emailjs;
+        if (!emailjs) throw new Error("EmailJS não carregado");
+
+        await emailjs.send(
+          "service_tbtjshe",
+          "template_jycz3b8",
+          {
+            buyer_email: buyerEmail,
+            product_name: PRODUCT_NAME,
+            price: PRICE,
+            to_email: SELLER_EMAIL,
+          },
+          "cAwcsr87WURqSY0av"
+        );
+
+        // Show success step
+        document.getElementById("step2")?.classList.remove("active");
+        document.getElementById("step3")?.classList.add("active");
+      } catch (err) {
+        console.error("Erro ao enviar email:", err);
+        alert("Erro ao enviar e-mail. Tente novamente.");
+        if (sendBtnEl) {
+          sendBtnEl.textContent = "✉️ Enviar";
+          (sendBtnEl as HTMLButtonElement).disabled = false;
+        }
+      }
     }
 
     // Attach event listeners
