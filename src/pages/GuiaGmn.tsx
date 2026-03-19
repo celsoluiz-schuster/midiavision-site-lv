@@ -176,9 +176,26 @@ const GuiaGmn = () => {
       const inputConfirm = document.getElementById("buyerEmailConfirm") as HTMLInputElement;
       const msg = document.getElementById("emailMatchMsg");
 
-      if (!email || !email.includes("@")) {
+      if (!email || !isValidEmail(email)) {
         input.style.borderColor = "#DC2626";
+        const emailErrMsg = document.getElementById("emailValidMsg");
+        if (emailErrMsg) {
+          emailErrMsg.style.display = "block";
+          emailErrMsg.style.color = "#DC2626";
+          emailErrMsg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        }
         input.focus();
+        return;
+      }
+      if (!isValidEmail(emailConfirm)) {
+        inputConfirm.style.borderColor = "#DC2626";
+        const confirmErrMsg = document.getElementById("emailConfirmValidMsg");
+        if (confirmErrMsg) {
+          confirmErrMsg.style.display = "block";
+          confirmErrMsg.style.color = "#DC2626";
+          confirmErrMsg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        }
+        inputConfirm.focus();
         return;
       }
       if (email !== emailConfirm) {
