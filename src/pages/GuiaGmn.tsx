@@ -537,14 +537,9 @@ const GuiaGmn = () => {
     <div class="modal-step" id="step2">
       <div class="step-badge">Passo 2 de 2</div>
       <div style="font-size:48px;margin-bottom:16px">📧</div>
-      <h3>Envie o comprovante</h3>
-      <p style="font-size:14px;color:#4B5563;line-height:1.6;margin-bottom:16px">Envie o comprovante do Pix para o e-mail abaixo. Você receberá o guia no e-mail informado.</p>
-      <div style="margin-bottom:16px;padding:14px 20px;background:#F3F4F6;border-radius:12px;border:1px solid #E5E7EB;font-size:13px;color:#374151;line-height:1.8">
-        📩 Enviar comprovante para: <strong>midiavision.web@gmail.com</strong><br>
-        Horário de atendimento: seg–sáb, 8h–20h<br>
-        Prazo de entrega: por e-mail após confirmação
-      </div>
-      <button id="sendBtn" class="btn-done" style="background:#16A34A;font-size:16px;padding:14px 32px;cursor:pointer;">✉️ Enviar</button>
+      <h3>Avise que pagou!</h3>
+      <p style="font-size:14px;color:#4B5563;line-height:1.6;margin-bottom:16px">Clique no botão abaixo para nos avisar. Assim que confirmarmos o pagamento, enviaremos o guia para o seu e-mail.</p>
+      <button id="sendBtn" class="btn-done" style="background:#16A34A;font-size:16px;padding:14px 32px;cursor:pointer;">✅ Confirmar pagamento</button>
     </div>
     <div class="modal-step" id="step3">
       <div style="font-size:56px;margin-bottom:16px">✅</div>
