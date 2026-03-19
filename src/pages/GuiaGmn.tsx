@@ -27,6 +27,7 @@ const GuiaGmn = () => {
     return () => {
       document.head.removeChild(link);
       if (document.body.contains(script)) document.body.removeChild(script);
+      if (document.body.contains(emailjsScript)) document.body.removeChild(emailjsScript);
     };
   }, []);
 
