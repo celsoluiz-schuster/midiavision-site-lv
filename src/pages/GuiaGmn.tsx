@@ -543,8 +543,8 @@ const GuiaGmn = () => {
     </div>
     <div class="modal-step" id="step3">
       <div style="font-size:56px;margin-bottom:16px">✅</div>
-      <h3 style="color:#16A34A">E-mail enviado com sucesso!</h3>
-      <p style="font-size:15px;color:#4B5563;margin-top:8px;line-height:1.6">Recebemos sua solicitação.<br>Logo seu material será enviado para o e-mail informado.</p>
+      <h3 style="color:#16A34A">Aviso enviado!</h3>
+      <p style="font-size:15px;color:#4B5563;margin-top:8px;line-height:1.6">Recebemos sua confirmação. Vamos verificar o pagamento e enviar o guia para o e-mail informado em breve.</p>
       <div style="margin-top:24px;padding:14px 20px;background:#F0FDF4;border-radius:12px;border:1px solid #BBF7D0;font-size:13px;color:#166534;line-height:1.6">
         📩 Fique atento à sua caixa de entrada e também à pasta de spam.
       </div>
