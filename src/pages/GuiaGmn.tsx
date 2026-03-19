@@ -107,6 +107,29 @@ const GuiaGmn = () => {
         });
     }
 
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function isValidEmail(email: string): boolean {
+      return EMAIL_REGEX.test(email);
+    }
+
+    function validateSingleEmail(inputId: string, msgId: string) {
+      const input = document.getElementById(inputId) as HTMLInputElement;
+      const msg = document.getElementById(msgId);
+      if (!input || !msg) return;
+      const val = input.value.trim();
+      if (!val) { msg.style.display = "none"; input.style.borderColor = "#E5E7EB"; return; }
+      if (!isValidEmail(val)) {
+        msg.style.display = "block";
+        msg.style.color = "#DC2626";
+        msg.textContent = "❌ Digite um e-mail válido, ex: seunome@gmail.com";
+        input.style.borderColor = "#DC2626";
+      } else {
+        msg.style.display = "none";
+        input.style.borderColor = "#22a052";
+      }
+    }
+
     function validateEmailMatch() {
       const e1 = (document.getElementById("buyerEmail") as HTMLInputElement)?.value.trim();
       const e2 = (document.getElementById("buyerEmailConfirm") as HTMLInputElement)?.value.trim();
@@ -115,7 +138,10 @@ const GuiaGmn = () => {
         if (msg) msg.style.display = "none";
         return;
       }
-      if (e1 === e2 && e1.includes("@")) {
+      if (!isValidEmail(e2)) {
+        return; // individual validation handles this
+      }
+      if (e1 === e2) {
         msg.style.display = "block";
         msg.style.color = "#166534";
         msg.textContent = "✅ E-mails conferem!";
