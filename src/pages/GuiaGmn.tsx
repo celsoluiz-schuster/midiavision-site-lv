@@ -571,9 +571,11 @@ const GuiaGmn = () => {
       
       <button class="btn-copy" data-action="copyPix">📋 Copiar chave Pix</button>
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px;margin-top:20px">Seu e-mail para receber o guia</label>
-      <input type="email" id="buyerEmail" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
+      <input type="email" id="buyerEmail" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:4px;" />
+      <div id="emailValidMsg" style="display:none;font-size:13px;margin-bottom:10px"></div>
       <label style="display:block;text-align:left;font-size:13px;font-weight:600;color:#0F2744;margin-bottom:6px">Confirme seu e-mail</label>
-      <input type="email" id="buyerEmailConfirm" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:10px;" />
+      <input type="email" id="buyerEmailConfirm" placeholder="voce@exemplo.com" autocomplete="off" style="width:100%;padding:12px 16px;border:2px solid #E5E7EB;border-radius:10px;font-size:15px;font-family:'DM Sans',sans-serif;color:#0F2744;outline:none;transition:border 0.2s;margin-bottom:4px;" />
+      <div id="emailConfirmValidMsg" style="display:none;font-size:13px;margin-bottom:10px"></div>
       <div id="emailMatchMsg" style="display:none;font-size:13px;margin-bottom:12px"></div>
       <button class="btn-done" data-action="goStep2">Já paguei — Confirmar</button>
     </div>
