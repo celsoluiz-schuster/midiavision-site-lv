@@ -11,6 +11,11 @@ const GuiaGmn = () => {
     link.rel = "stylesheet";
     document.head.appendChild(link);
 
+    // Load EmailJS SDK
+    const emailjsScript = document.createElement("script");
+    emailjsScript.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+    document.body.appendChild(emailjsScript);
+
     // Load QRious
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js";
