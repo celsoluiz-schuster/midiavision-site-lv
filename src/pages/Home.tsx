@@ -374,9 +374,9 @@ const Home = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-mv-blue-light to-mv-lime mx-auto rounded-full"></div>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <Card className="border-2 border-primary/10 shadow-xl hover:shadow-2xl transition-all duration-300 fade-in-section">
-              <CardContent className="p-8 lg:p-12">
+              <CardContent className="p-8 lg:p-10">
                 <div className="flex flex-col items-center text-center space-y-6">
                   <div className="flex gap-1 mb-2">
                     {[1, 2, 3, 4, 5].map((star) =>
@@ -386,7 +386,7 @@ const Home = () => {
                     )}
                   </div>
 
-                  <blockquote className="text-xl lg:text-2xl text-muted-foreground italic leading-relaxed">
+                  <blockquote className="text-lg lg:text-xl text-muted-foreground italic leading-relaxed">
                     "Trabalhamos com a MidiaVision e o resultado superou nossas expectativas. Atendimento próximo, profissionalismo e entrega de qualidade. Recomendo!"
                   </blockquote>
 
@@ -394,15 +394,42 @@ const Home = () => {
                     <div className="font-bold text-lg text-primary">Carine Schariff</div>
                     <div className="text-muted-foreground">Nutricionista</div>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  <div className="w-full pt-6 border-t border-border">
-                    <p className="text-sm text-muted-foreground italic">
-                      💡 Quer ser nosso próximo case de sucesso? Entre em contato!
-                    </p>
+            <Card className="border-2 border-primary/10 shadow-xl hover:shadow-2xl transition-all duration-300 fade-in-section">
+              <CardContent className="p-8 lg:p-10">
+                <div className="flex flex-col items-center text-center space-y-6">
+                  <div className="flex gap-1 mb-2">
+                    {[1, 2, 3, 4, 5].map((star) =>
+                    <svg key={star} className="w-6 h-6 fill-current" style={{ color: 'hsl(48, 100%, 50%)' }} viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    )}
+                  </div>
+
+                  <blockquote className="text-lg lg:text-xl text-muted-foreground italic leading-relaxed">
+                    "A MidiaVision transformou nossa presença digital. Profissionais comprometidos, criativos e que realmente entendem o mercado imobiliário. Resultado excelente!"
+                  </blockquote>
+
+                  <div className="pt-4">
+                    <div className="font-bold text-lg text-primary">VisionLar Imóveis</div>
+                    <div className="text-muted-foreground">
+                      <a href="https://www.visionlarimoveis.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        www.visionlarimoveis.com.br
+                      </a>
+                    </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
+
+            <div className="md:col-span-2 text-center pt-4">
+              <p className="text-sm text-muted-foreground italic">
+                💡 Quer ser nosso próximo case de sucesso? Entre em contato!
+              </p>
+            </div>
           </div>
         </div>
       </section>
