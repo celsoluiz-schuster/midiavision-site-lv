@@ -295,7 +295,7 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleContactClick}
+                  onClick={() => openWhatsApp('Olá! Quero automatizar meu atendimento com a MidiaVision.')}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300 hover:shadow-lg">
                   Automatizar Agora
                   <ChevronRight className="w-4 h-4 ml-2" />
@@ -507,9 +507,9 @@ const Home = () => {
           <div className="mt-12 text-center fade-in-section">
             <p className="text-muted-foreground mb-6">Não encontrou sua dúvida?</p>
             <Button
-              onClick={handleContactClick}
+              onClick={() => openWhatsApp('Olá! Tenho uma dúvida e gostaria de falar com a equipe da MidiaVision.')}
               className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl">
-              <Mail className="w-5 h-5 mr-2" />
+              <MessageCircle className="w-5 h-5 mr-2" />
               Fale Conosco
             </Button>
           </div>
@@ -542,10 +542,10 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-6">
             <Button
-              onClick={handleContactClick}
+              onClick={() => openWhatsApp('Olá! Gostaria de começar um projeto com a MidiaVision.')}
               size="lg"
               className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-bold px-12 py-8 text-xl transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <Mail className="w-6 h-6 mr-3" />
+              <MessageCircle className="w-6 h-6 mr-3" />
               Entre em Contato
             </Button>
           </div>
@@ -593,14 +593,14 @@ const Home = () => {
               <h4 className="text-lg font-bold">Contato</h4>
               <div className="space-y-3 text-primary-foreground/60">
                 <p className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  midiavision.web@gmail.com
+                  <MessageCircle className="w-4 h-4" />
+                  (51) 99509-0055
                 </p>
               </div>
               <Button
-                onClick={handleContactClick}
+                onClick={() => openWhatsApp('Olá! Entrei em contato pelo site da MidiaVision.')}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold transition-all duration-300">
-                <Mail className="w-4 h-4 mr-2" />
+                <MessageCircle className="w-4 h-4 mr-2" />
                 Fale Conosco
               </Button>
             </div>
