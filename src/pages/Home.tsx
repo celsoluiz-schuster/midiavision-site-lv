@@ -615,10 +615,10 @@ const Home = () => {
 
       {/* Floating Contact Button */}
       <button
-        onClick={handleContactClick}
+        onClick={() => openWhatsApp('Olá! Gostaria de conversar sobre os serviços da MidiaVision.')}
         className="fixed bottom-6 right-6 z-50 bg-mv-green hover:bg-mv-green-hover text-primary-foreground p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce"
         aria-label="Entrar em contato">
-        <Mail className="w-6 h-6" />
+        <MessageCircle className="w-6 h-6" />
       </button>
     </div>);
 
