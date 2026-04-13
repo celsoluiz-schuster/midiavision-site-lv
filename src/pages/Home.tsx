@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, Mail, ShoppingCart } from 'lucide-react';
+import { TrendingUp, Bot, Monitor, Target, Zap, Users, Award, ChevronRight, MessageCircle } from 'lucide-react';
 
 const Home = () => {
-  const contactEmail = 'midiavision.web@gmail.com';
+  const whatsappNumber = '5551995090055';
 
-  const handleContactClick = () => {
-    window.location.href = `mailto:${contactEmail}`;
+  const openWhatsApp = (message: string) => {
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
 
   const handleLogoClick = () => {
@@ -55,9 +56,9 @@ const Home = () => {
 
 
               <Button
-                onClick={handleContactClick}
+                onClick={() => openWhatsApp('Olá! Gostaria de saber mais sobre os serviços da MidiaVision.')}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-6 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <Mail className="w-4 h-4 mr-2" />
+                <MessageCircle className="w-4 h-4 mr-2" />
                 Contato
               </Button>
             </div>
@@ -65,10 +66,10 @@ const Home = () => {
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <Button
-                onClick={handleContactClick}
+                onClick={() => openWhatsApp('Olá! Gostaria de saber mais sobre os serviços da MidiaVision.')}
                 className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground"
                 size="sm">
-                <Mail className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" />
               </Button>
             </div>
           </div>
@@ -106,15 +107,15 @@ const Home = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
-                  onClick={handleContactClick}
+                  onClick={() => openWhatsApp('Olá! Visitei o site da MidiaVision e gostaria de mais informações.')}
                   size="lg"
                   className="bg-mv-green hover:bg-mv-green-hover text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
-                  <Mail className="w-5 h-5 mr-2" />
+                  <MessageCircle className="w-5 h-5 mr-2" />
                   Contato
                 </Button>
 
                 <Button
-                  onClick={handleContactClick}
+                  onClick={() => openWhatsApp('Olá! Gostaria de solicitar um orçamento para meu projeto.')}
                   size="lg"
                   variant="outline"
                   className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-6 text-lg transition-all duration-300">
@@ -233,7 +234,7 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleContactClick}
+                  onClick={() => openWhatsApp('Olá! Tenho interesse no serviço de Desenvolvimento de Sites da MidiaVision.')}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300 hover:shadow-lg">
                   Saiba Mais
                   <ChevronRight className="w-4 h-4 ml-2" />
@@ -265,7 +266,7 @@ const Home = () => {
                   )}
                 </ul>
                 <Button
-                  onClick={handleContactClick}
+                  onClick={() => openWhatsApp('Olá! Quero saber mais sobre Gestão de Tráfego Pago da MidiaVision.')}
                   className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold transition-all duration-300 hover:shadow-lg">
                   Quero Mais Clientes
                   <ChevronRight className="w-4 h-4 ml-2" />
