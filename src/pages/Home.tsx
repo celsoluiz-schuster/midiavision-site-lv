@@ -57,7 +57,7 @@ const Home = () => {
                 <Button
                   className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105">
                   <ShoppingCart className="w-4 h-4 mr-2" />
-                  🛒 Comprar Produto
+                  Produtos
                 </Button>
               </Link>
 
@@ -95,16 +95,21 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* Banner Guia GMN */}
-              <Link to="/guia-gmn" className="block">
-                <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl p-4 flex items-center justify-between gap-4 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+              {/* Produtos em breve */}
+              <div className="space-y-3">
+                <div className="bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl p-4 flex items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-bold text-amber-100 uppercase tracking-wider">Novo</span>
-                    <p className="text-white font-semibold text-sm sm:text-base">Guia Google Meu Negócio para Corretores — R$ 67</p>
+                    <span className="text-xs font-bold text-gray-100 uppercase tracking-wider">Em breve</span>
+                    <p className="text-white font-semibold text-sm sm:text-base">Guia Google Meu Negócio para Corretores</p>
                   </div>
-                  <span className="bg-white text-amber-600 font-bold text-sm px-4 py-2 rounded-lg whitespace-nowrap shrink-0">Comprar agora →</span>
                 </div>
-              </Link>
+                <div className="bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl p-4 flex items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-bold text-gray-100 uppercase tracking-wider">Em breve</span>
+                    <p className="text-white font-semibold text-sm sm:text-base">Site imobiliário completo de alta conversão</p>
+                  </div>
+                </div>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
